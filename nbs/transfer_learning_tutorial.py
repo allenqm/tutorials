@@ -130,7 +130,7 @@ def imshow(inp, title=None):
     inp = inp.numpy().transpose((1, 2, 0))
     mean = np.array([0.485, 0.456, 0.406])
     std = np.array([0.229, 0.224, 0.225])
-    inp = std * inp + mean
+    inp = std * inp + mean #de-normalize
     inp = np.clip(inp, 0, 1)
     plt.imshow(inp)
     if title is not None:
@@ -362,3 +362,6 @@ plt.show()
 # checkout our `Quantized Transfer Learning for Computer Vision Tutorial <https://pytorch.org/tutorials/intermediate/quantized_transfer_learning_tutorial.html>`_.
 #
 #
+import components
+from importlib import reload as rreload
+rreload(components)
