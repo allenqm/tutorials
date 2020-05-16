@@ -115,3 +115,10 @@ ENV/
 .DS_Store
 cleanup.sh
 *.swp
+
+# data files
+*.jpg
+*.gz
+*.jpeg
+*.gif
+*.pth
