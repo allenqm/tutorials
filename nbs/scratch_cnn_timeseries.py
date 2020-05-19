@@ -154,3 +154,90 @@ def we_have_datasplits():
 
 def we_can_train_a_model():
     pass
+
+
+
+for split in task.get_splits():
+    split['X'] = get_X(split['ids'])
+    y = split['y']
+
+# Decompose the business or product issue into component learning tasks
+# define the learning task
+    # y[i] = F(X[i])
+    # min: G(metric(y[split_j], yhat[split_j])) for all split_j in J
+
+    # y = 
+    # i =
+    #  
+    # split_j, J, G() 
+    #   = G() is mean(), J is a set of 5 folds
+    #   = G() is Identity(), J is test set
+    # metric = 
+
+    # F(), X =     
+
+# Fetch and preprocess data: return a (sample_id, dim(X), dim(y)) dataset / array
+    df_sample_ids = get_sample_ids()
+    df_y = get_response()
+    df_X = get_X() # should mostly be type, size, name changes
+    df_preprocessed = create_spine(X=[], sample_id="", y="")
+
+# Split data: return a dictioanry of data splits
+    datasplits = split_data(df_preprocessed, sample_id="", y="")
+
+# init model: return an untrained model and optimizer
+    model, opt = get_model(lr, momentum)
+
+# model fitting: return a trained model and optimizer
+    fit_model(n_epochs, batch_size)
+    evaluate()
+
+#** Downstream feature engineering (ie, post split) is possible if
+# there's a transformation that's bespoke to the learning algorithm
+# or it's fast to do per batch on the GPU
+#** assuming in-memory data containers, as opposed to storing intermediary outputs in
+# blob storage or the file systems.
+
+class DataBlock:
+    def __init__(self, cached_data):
+        if cached_data:
+            self.cached_data = cached_data
+        elif not cached_data:
+            self.cached_data = {}
+
+    def get_sample_ids(self):
+        result = None
+        self.cached_data['sample_ids'] = result
+
+    def get_y(self):
+        result = None
+        self.cached_data['y'] = result
+
+    def get_X(self):
+        result = None
+        self.cached_data['X'] = result
+
+    def preprocess_data(self):
+        result = None
+        self.cached_data['preprocessed_data'] = result
+
+class Learner:
+    def __init__(self, params):
+        self.params = params
+
+    def get_model(self):
+        raise(NotImplementedError)
+
+    def fit_model(self):
+        raise(NotImplementedError)
+
+    def call_model(self):
+        raise(NotImplementedError)
+
+
+def split_data():
+    pass
+
+def evaluate_model():
+    pass
+
