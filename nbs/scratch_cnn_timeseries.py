@@ -84,7 +84,7 @@ dataloader_test = DataLoader(dataset_test, batch_size=50)
 
 
 
-## training loop with eval
+## init model and training parameters
 epochs = 2
 lr = 0.1
 momentum = 0.9
@@ -92,6 +92,8 @@ model = CNN(output_length=N_FORECAST_STEPS)
 opt = optim.SGD(model.parameters(), lr=lr, momentum=momentum)
 criterion = mse_loss
 
+
+# training loop with eval
 for epoch in range(epochs):
     for xb, yb in dataloader_train:
         output = model(xb)
