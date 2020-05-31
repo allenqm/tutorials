@@ -84,7 +84,7 @@ dataloader_test = DataLoader(dataset_test, batch_size=50)
 
 
 
-## init model and training parameters
+## init model and training parameters (epochs, optimizer params, loss)
 epochs = 2
 lr = 0.1
 momentum = 0.9
